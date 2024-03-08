@@ -1,4 +1,4 @@
-define: &docker_image_tag: 7316.15.dev0
+define: &docker_image_tag: 7316.16.dev0
 
 nautilus:
   metadata:
@@ -13,4 +13,4 @@ nautilus:
     ABUSESVC_DOCKER_IMAGE_TAG: *docker_image_tag
     ABUSESVC_MSSQL_HOST: mt3-db-sm-accountsnew.jungle.tech
     USERNAME: foo
-    IMAGE_TAG: 7036.15.dev
+    IMAGE_TAG: 7036.12.dev
