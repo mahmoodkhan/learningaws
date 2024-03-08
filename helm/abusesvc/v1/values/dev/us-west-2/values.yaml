@@ -1,4 +1,4 @@
-define: &docker_image_tag: 7316.15.dev0
+define: &docker_image_tag: 7316.16.dev0
 
 nautilus:
   metadata:
