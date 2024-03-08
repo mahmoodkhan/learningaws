@@ -1,0 +1,14 @@
+define: &docker_image_tag: 7316.13.dev0
+
+nautilus:
+  metadata:
+    environment: dev
+    region: w8
+
+  deploymentDefaults:
+    image: *docker_image_tag
+
+  env:
+    ABUSESVC_AWS_REGION: us-west-2
+    ABUSESVC_DOCKER_IMAGE_TAG: *docker_image_tag
+    ABUSESVC_MSSQL_HOST: mt3-db-sm-accountsnew.jungle.tech
