@@ -12,3 +12,4 @@ nautilus:
     ABUSESVC_AWS_REGION: us-west-2
     ABUSESVC_DOCKER_IMAGE_TAG: *docker_image_tag
     ABUSESVC_MSSQL_HOST: mt3-db-sm-accountsnew.jungle.tech
+    USERNAME: foo
