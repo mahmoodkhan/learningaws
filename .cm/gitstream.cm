@@ -1,0 +1,41 @@
+
+# -*- mode: yaml -*-
+# This example configuration for provides basic automations to get started with gitStream.
+# View the gitStream quickstart for more examples: https://docs.gitstream.cm/examples/
+manifest:
+  version: 1.0
+
+
+automations:
+  # Inform PR authors when they fail to reference Jira tickets in the PR title or description.
+  auto-approve-version_bump:
+    if:
+      - {{ (is.version_bump) }}
+    run:
+      - action: add-label@v1
+        args:
+          label: "bumping-version-dev"
+          color: {{ colors.red }}
+
+
+
+
+# +----------------------------------------------------------------------------+
+# | Custom Expressions                                                         |
+# | https://docs.gitstream.cm/how-it-works/#custom-expressions                 |
+# +----------------------------------------------------------------------------+
+
+is:
+  # version_bump: {{ source.diff.files | match(attr='diff', term='7316.13.dev0') | some}}
+  # version_bump: {{ source.diff.files | matchDiffLines(attr='diff', regex=(r/\d+\.\d+\.\w+/)) | every}}
+  version_bump: {{ source.diff.files | matchDiffLines(attr='diff', regex=(r/\d+\.\d+\.[A-Za-z0-1]+\.\w+|\d+\.\d+\.[A-Za-z0-1]+|\d+\.\d+-\w+|\d+-\w+/)) | every}}
+
+has:
+  jira_ticket_in_title: {{ pr.title | includes(regex=r/\b[A-Za-z]+-\d+\b/) }}
+  jira_ticket_in_desc: {{ pr.description | includes(regex=r/atlassian.net\/browse\/\w{1,}-\d{3,4}/) }}
+
+colors:
+  red: 'b60205'
+  yellow: 'fbca04'
+  green: '0e8a16'
+
