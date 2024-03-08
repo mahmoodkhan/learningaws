@@ -1,0 +1,16 @@
+define: &docker_image_tag: 7316.15.dev0
+
+nautilus:
+  metadata:
+    environment: test
+    region: w8
+
+  deploymentDefaults:
+    image: *docker_image_tag
+
+  env:
+    ABUSESVC_AWS_REGION: us-west-2
+    ABUSESVC_DOCKER_IMAGE_TAG: *docker_image_tag
+    ABUSESVC_MSSQL_HOST: mt2-db-host
+    USERNAME: foo
+    IMAGE_TAG: 7036.15.dev
